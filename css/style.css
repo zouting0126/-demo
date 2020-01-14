@@ -1,0 +1,114 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:700");
+* {
+  box-sizing: border-box;
+}
+:root {
+  --font-size: 4;
+  --border-width: 4;
+  --text: #fef160;
+  --border: #be90d4;
+  --color-one: #3fc380;
+  --color-two: #f0ff00;
+  --color-three: #f62459;
+  --color-four: #19b5fe;
+}
+body {
+  align-items: center;
+  background-color: #111;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  justify-content: center;
+  min-height: 100vh;
+}
+.showcase {
+  display: grid;
+  grid-template-rows: 20px calc(var(--font-size) * 1.25rem) 20px;
+  grid-template-columns: repeat(10, calc(var(--font-size) * 1.25rem));
+  position: relative;
+}
+.showcase__backdrop {
+  background: #fff;
+  bottom: 20px;
+  left: calc((var(--font-size) * 1.25rem) - (var(--border-width) * 0.5px));
+  opacity: 0.75;
+  position: absolute;
+  right: calc((var(--font-size) * 1.25rem) - (var(--border-width) * 0.5px));
+  top: 20px;
+}
+.showcase__border {
+  align-content: center;
+  background: var(--border);
+  border: 2px solid #000;
+  display: grid;
+  grid-column: 1/-1;
+  grid-template-columns: repeat(10, calc(var(--font-size) * 1.25rem));
+  justify-items: center;
+}
+.showcase__border div {
+  background: #fafafa;
+  border: 2px solid rgba(0,0,0,0.75);
+  height: 12px;
+  width: 12px;
+}
+.showcase__text {
+  color: var(--text);
+  font-size: calc(var(--font-size) * 1rem);
+  grid-column: 2/-2;
+  grid-row: 2;
+  line-height: calc(var(--font-size) * 1.25rem);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 3;
+}
+.showcase__text .word {
+  display: grid;
+  grid-gap: 0 calc(var(--border-width) * 1px);
+  grid-template-columns: repeat(8, calc((var(--font-size) * 1.25rem) - calc(var(--border-width) * 1px)));
+  padding: 0 2px;
+}
+.showcase__text .char {
+  -webkit-animation-delay: calc(((var(--char-index) + 1) * var(--step)) * 1s);
+          animation-delay: calc(((var(--char-index) + 1) * var(--step)) * 1s);
+  -webkit-animation-duration: calc(var(--duration) * 1s);
+          animation-duration: calc(var(--duration) * 1s);
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-name: flash;
+          animation-name: flash;
+  background: #000;
+  text-shadow: 0 4px 0 #000;
+}
+.showcase__text .char:nth-of-type(n) {
+  --color: var(--color-one);
+}
+.showcase__text .char:nth-of-type(2n) {
+  --color: var(--color-two);
+}
+.showcase__text .char:nth-of-type(3n) {
+  --color: var(--color-three);
+}
+.showcase__text .char:nth-of-type(4n) {
+  --color: var(--color-four);
+}
+@-webkit-keyframes flash {
+  0%, 30%, 50%, 100% {
+    background: #000;
+  }
+  40% {
+    background: var(--color);
+    -webkit-filter: drop-shadow(0 0 calc(var(--font-size) * 1rem) var(--color)) blur(2px) brightness(5);
+            filter: drop-shadow(0 0 calc(var(--font-size) * 1rem) var(--color)) blur(2px) brightness(5);
+  }
+}
+@keyframes flash {
+  0%, 30%, 50%, 100% {
+    background: #000;
+  }
+  40% {
+    background: var(--color);
+    -webkit-filter: drop-shadow(0 0 calc(var(--font-size) * 1rem) var(--color)) blur(2px) brightness(5);
+            filter: drop-shadow(0 0 calc(var(--font-size) * 1rem) var(--color)) blur(2px) brightness(5);
+  }
+}

@@ -1,0 +1,2 @@
+const { Splitting } = window;
+Splitting();
